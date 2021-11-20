@@ -1,8 +1,10 @@
 import { isUndefined, forEach } from 'celia';
 
+type EntryShim = [any, any];
+
 function findIndex(arr: any[], key: any) {
   let result = -1;
-  forEach(arr, (entry, index) => {
+  forEach(arr, (entry: EntryShim, index: number) => {
     if (entry[0] === key) {
       result = index;
       return false;
@@ -12,7 +14,7 @@ function findIndex(arr: any[], key: any) {
 }
 
 class MapShim {
-  private readonly entries_: any[] = [];
+  private readonly entries_: EntryShim[] = [];
 
   get size() {
     return this.entries_.length;
@@ -34,7 +36,7 @@ class MapShim {
 
   forEach(callbackfn: (value: any, key: any, map: MapShim) => void, thisArg?: any): void {
     const { entries_ } = this;
-    forEach(entries_, (entry) => {
+    forEach(entries_, (entry: EntryShim) => {
       if (thisArg) {
         callbackfn.call(thisArg, entry[1], entry[0], this);
       }

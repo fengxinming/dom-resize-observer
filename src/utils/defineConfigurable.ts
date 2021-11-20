@@ -1,7 +1,7 @@
 import { forOwn } from 'celia';
 
 export default (target: any, props: any) => {
-  forOwn(props, (val, key) => {
+  forOwn(props, (val: any, key: string) => {
     Object.defineProperty(target, key, {
       value: val,
       enumerable: false,
