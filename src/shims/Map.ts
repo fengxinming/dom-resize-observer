@@ -1,10 +1,8 @@
-import { isUndefined, forEach } from 'celia';
-
 type EntryShim = [any, any];
 
 function findIndex(arr: any[], key: any) {
   let result = -1;
-  forEach(arr, (entry: EntryShim, index: number) => {
+  arr.forEach((entry: EntryShim, index: number) => {
     if (entry[0] === key) {
       result = index;
       return false;
@@ -36,7 +34,7 @@ class MapShim {
 
   forEach(callbackfn: (value: any, key: any, map: MapShim) => void, thisArg?: any): void {
     const { entries_ } = this;
-    forEach(entries_, (entry: EntryShim) => {
+    entries_.forEach((entry: EntryShim) => {
       if (thisArg) {
         callbackfn.call(thisArg, entry[1], entry[0], this);
       }
@@ -72,6 +70,6 @@ class MapShim {
   }
 }
 
-export default !isUndefined(Map)
+export default typeof Map !== 'undefined'
   ? Map
   : MapShim;

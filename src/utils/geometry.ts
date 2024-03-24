@@ -1,5 +1,4 @@
-import { isUndefined, isFunction } from 'celia';
-import { IDOMRectReadOnly } from '~/types/index.js';
+import { IDOMRectReadOnly } from '../typings';
 import defineConfigurable from './defineConfigurable.js';
 import getWindowOf from './getWindowOf.js';
 import { isBrowser } from './isBrowser.js';
@@ -108,13 +107,13 @@ function getHTMLElementContentRect(target: Element) {
 }
 
 const isSVGGraphicsElement = (() => {
-  if (!isUndefined(SVGGraphicsElement)) {
+  if (typeof SVGGraphicsElement !== 'undefined') {
     return (target: any) => target instanceof getWindowOf(target).SVGGraphicsElement;
   }
 
   return (target: Element) => (
     target instanceof getWindowOf(target).SVGElement
-        && isFunction(target as any['getBBox'])
+        && typeof (target as any['getBBox']) === 'function'
   );
 })();
 
@@ -131,7 +130,7 @@ function getContentRect(target: Element) {
 }
 
 function createReadOnlyRect({ x, y, width, height }: IRect): DOMRectReadOnly | IDOMRectReadOnly {
-  const Constr = !isUndefined(DOMRectReadOnly) ? DOMRectReadOnly : Object;
+  const Constr = typeof DOMRectReadOnly !== 'undefined' ? DOMRectReadOnly : Object;
   const rect = Object.create(Constr.prototype);
 
   defineConfigurable(rect, {
@@ -146,5 +145,6 @@ function createReadOnlyRect({ x, y, width, height }: IRect): DOMRectReadOnly | I
 }
 
 export {
-  IRect, createRectInit, getContentRect, createReadOnlyRect
+  createReadOnlyRect,
+  createRectInit, getContentRect, IRect
 };

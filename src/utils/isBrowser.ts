@@ -1,4 +1,2 @@
-import { isUndefined } from 'celia';
-
 export const isBrowser
- = !isUndefined(window) && !isUndefined(document) && window.document === document;
+ = typeof window !== 'undefined' && typeof document !== 'undefined' && window.document === document;

@@ -1,18 +1,16 @@
-import { isUndefined } from 'celia';
-
 /**
  * 返回正确的 global
  */
 export default (() => {
-  if (!isUndefined(window) && window.Math === Math) {
+  if (typeof window !== 'undefined' && window.Math === Math) {
     return window;
   }
 
-  if (!isUndefined(global) && global.Math === Math) {
+  if (typeof global !== 'undefined' && global.Math === Math) {
     return global;
   }
 
-  if (!isUndefined(self) && self.Math === Math) {
+  if (typeof self !== 'undefined' && self.Math === Math) {
     return self;
   }
 

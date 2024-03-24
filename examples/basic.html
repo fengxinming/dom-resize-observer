@@ -5,22 +5,20 @@
     <style>
       .box {
         width: 800px;
-        height: 100vh;
         border: 1px solid #000;
       }
       .box > div {
-        height: 100%;
         width: 100%;
       }
     </style>
   </head>
   <body>
     <div class="box">
-      <div id="resizeObserver">
+      <div id="resizeObserver" contenteditable="true">
         ResizeObserver
       </div>
     </div>
-    <script src="/ResizeObserverPolyfill.js"></script>
+    <script src="ResizeObserverPolyfill.js"></script>
     <script>
       const resizeObserver = new ResizeObserverPolyfill(entries => {
         for (let entry of entries) {

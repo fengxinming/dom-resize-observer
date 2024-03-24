@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "sourceMap": false,
+    "target": "ES5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "strict": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "downlevelIteration": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "jsx": "preserve",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
+  }
+}

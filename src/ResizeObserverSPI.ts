@@ -1,9 +1,8 @@
-import { isFunction, isUndefined } from 'celia';
-import { IResizeObserverEntry, IResizeObserverSPI } from '~/types';
-import Map from './shims/Map';
 import ResizeObservation from './ResizeObservation';
 import ResizeObserverController from './ResizeObserverController';
 import ResizeObserverEntry from './ResizeObserverEntry';
+import Map from './shims/Map';
+import { IResizeObserverEntry, IResizeObserverSPI } from './typings';
 import getWindowOf from './utils/getWindowOf';
 
 export type ResizeObserverSPICallback = (entries: IResizeObserverEntry[]) => void;
@@ -30,7 +29,7 @@ export default class ResizeObserverSPI implements IResizeObserverSPI {
   private readonly observations_ = new Map();
 
   constructor(callback: ResizeObserverSPICallback) {
-    if (!isFunction(callback)) {
+    if (typeof callback !== 'function') {
       throw new TypeError('The callback provided as parameter 1 is not a function.');
     }
 
@@ -135,7 +134,7 @@ export default class ResizeObserverSPI implements IResizeObserverSPI {
       throw new TypeError('1 argument required, but only 0 present.');
     }
 
-    if (isUndefined(Element) || !(Element instanceof Object)) {
+    if (typeof Element === 'undefined' || !(Element instanceof Object)) {
       return false;
     }
 

@@ -1,12 +1,11 @@
 
-import { isUndefined } from 'celia';
-import { IResizeObserverSPI } from '~/types/index';
+import { IResizeObserverSPI } from './typings';
 import { isBrowser } from './utils/isBrowser';
 import throttle from './utils/throttle';
 
 const REFRESH_DELAY = 20;
 const transitionKeys = ['top', 'right', 'bottom', 'left', 'width', 'height', 'size', 'weight'];
-const mutationObserverSupported = !isUndefined(MutationObserver);
+const mutationObserverSupported = typeof MutationObserver !== 'undefined';
 
 export default class ResizeObserverController {
   /**

@@ -1,13 +1,13 @@
-import { forOwn } from 'celia';
-
 export default (target: any, props: any) => {
-  forOwn(props, (val: any, key: string) => {
-    Object.defineProperty(target, key, {
-      value: val,
-      enumerable: false,
-      writable: false,
-      configurable: true
-    });
-  });
+  for (const key in props) {
+    if (Object.prototype.hasOwnProperty.call(props, key)) {
+      Object.defineProperty(target, key, {
+        value: props[key],
+        enumerable: false,
+        writable: false,
+        configurable: true
+      });
+    }
+  }
   return target;
 };

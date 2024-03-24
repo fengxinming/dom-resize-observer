@@ -1,5 +1,5 @@
-import IResizeObserver, { IResizeObserverCallback, IResizeObserverEntry } from '~/types';
 import ResizeObserverSPI from './ResizeObserverSPI';
+import IResizeObserver, { IResizeObserverCallback, IResizeObserverEntry } from './typings';
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class ResizeObserverImpl implements IResizeObserver {

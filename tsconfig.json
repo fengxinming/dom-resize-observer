@@ -1,33 +1,8 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "target": "es5",
-    "useDefineForClassFields": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "rootDir": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "~/*": [
-        "./*"
-      ]
-    }
-  },
+  "extends": "./tsconfig.base.json",
   "include": [
-    "src/**/*", 
-    "types/index.d.ts" 
+    "src",
+    "test",
+    "./node_modules/vite/client.d.ts"
   ]
 }

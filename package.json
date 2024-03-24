@@ -2,41 +2,49 @@
   "name": "dom-resize-observer",
   "version": "1.0.0",
   "description": "DOM elements resize observer.",
-  "main": "cjs.js",
-  "module": "esm.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
   "scripts": {
-    "build": "rollup -c",
-    "deps": "cnpm i"
+    "build": "vite build",
+    "test": "vitest run --coverage",
+    "prepare": "husky",
+    "eslint": "eslint --ext .js,.mjs,.jsx,.ts,.tsx --fix --ignore-path .eslintignore ./",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "resize-observer"
   ],
   "author": "Jesse <fxm0016@126.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
-    "@babel/eslint-plugin": "^7.13.16",
-    "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "@rollup/plugin-replace": "^3.0.0",
-    "@rollup/plugin-typescript": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "@typescript-eslint/parser": "^4.28.3",
-    "babel-plugin-lodash": "^3.3.4",
-    "camelcase": "^6.2.0",
-    "eslint-config-fe": "^1.4.1",
-    "rollup": "^2.60.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-empty": "^1.0.0",
-    "rollup-plugin-filesize": "^9.1.1",
-    "rollup-plugin-import-shaking": "^1.1.1",
-    "rollup-plugin-replace-imports": "^1.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.4.4"
-  },
+  "license": "MIT",
   "dependencies": {
-    "celia": "^8.0.4"
-  }
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.48.0",
+    "eslint-config-fe": "^2.1.2",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "vite": "^5.1.6",
+    "vite-plugin-cp": "^4.0.8",
+    "vite-plugin-external": "^4.3.0",
+    "vitest": "^1.4.0"
+  },
+  "files": [
+    "dist"
+  ]
 }
